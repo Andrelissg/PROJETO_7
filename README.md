@@ -1,6 +1,5 @@
 # PROJETO_7
 
-To do list em React
 ⭐ **To Do List em React**
 
 ## ⭐ Visão Geral
@@ -37,7 +36,9 @@ Projeto - To Do List em React
 Vamos criar nossa primeira aplicação React - o fatídico To Do List simples e
 funcional estilizado com TailwindCSS. Este projeto é perfeito para entender os
 conceitos fundamentais do React de forma prática.
-Conceito da Aplicação
+
+## Conceito da Aplicação
+
 Um To Do List clássico com as funcionalidades essenciais:
 
 1. Adicionar tarefas - Input para criar novas tarefas
@@ -48,8 +49,9 @@ Um To Do List clássico com as funcionalidades essenciais:
 
 ---
 
-Requisitos Funcionais
-01 - Adicionar Tarefas
+# Requisitos Funcionais
+
+01 - _Adicionar Tarefas_ <BR>
 • Input controlado para nova tarefa
 • Botão ou Enter para submeter
 • Validação: não permitir tarefas vazias
@@ -57,7 +59,7 @@ Requisitos Funcionais
 
 ---
 
-02 - Exibir Lista de Tarefas
+02 - _Exibir Lista de Tarefas_ <BR>
 • Renderizar array de tarefas
 • Mostrar título da tarefa
 • Indicar status (pendente/concluída)
@@ -65,28 +67,28 @@ Requisitos Funcionais
 
 ---
 
-03 - Marcar como Concluída
+03 - _Marcar como Concluída_ <BR>
 • Checkbox ou botão para toggle
 • Atualizar estado da tarefa específica
 • Feedback visual (texto riscado, cor diferente)
 
 ---
 
-04 - Remover Tarefas
+04 - _Remover Tarefas_ <BR>
 • Botão de delete para cada tarefa
 • Confirmação antes de remover (opcional)
 • Remover do estado/lista
 
 ---
 
-05 - Contador de Tarefas
+05 - _Contador de Tarefas_<BR>
 • Mostrar total de tarefas
 • Mostrar quantas estão pendentes
 • Mostrar quantas estão concluídas
 
 ---
 
-06 - Interface Responsiva
+06 - _Interface Responsiva_<BR>
 • Design mobile-first
 • Layout adaptativo
 • Experiência consistente em todos dispositivos
