@@ -1,34 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import React, { useState } from "react";
+import ListaDeTarefas from "./componentes/ListaDeTarefas";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [tarefas] = useState([
+    { id: 1, titulo: "Estudar React", concluida: false },
+    { id: 2, titulo: "Praticar CSS no React", concluida: true },
+  ]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Projeto - To Do List em React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h1 style={{ fontSize: "50px", marginBottom: "15px" }}>Minhas Tarefas</h1>
+      <ListaDeTarefas tarefas={tarefas} />
+    </div>
   );
 }
 
