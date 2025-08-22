@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ListaDeTarefas from "./componentes/ListaDeTarefas";
+import './style/ListaDeTarefas.css'
 
 function App() {
   const [tarefas] = useState([
@@ -8,8 +9,8 @@ function App() {
   ]);
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1 style={{ fontSize: "50px", marginBottom: "15px" }}>Minhas Tarefas</h1>
+    <div className="">
+      <h1 className="">Minhas Tarefas</h1>
       <ListaDeTarefas tarefas={tarefas} />
     </div>
   );
