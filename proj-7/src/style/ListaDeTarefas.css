@@ -1,0 +1,52 @@
+/* Mobile-first base styles */
+.todo-container {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+.sem-tarefas {
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.todo-input {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.todo-input:hover {
+  background-color: #f0f8ff;
+}
+
+/* Responsivo para telas maiores */
+@media (min-width: 600px) {
+  .todo-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .todo-input {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+}
