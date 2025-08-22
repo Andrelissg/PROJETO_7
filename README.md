@@ -49,46 +49,52 @@ Um To Do List clássico com as funcionalidades essenciais:
 
 ---
 
-# Requisitos Funcionais
+## Requisitos Funcionais
 
-01 - _Adicionar Tarefas_ <BR>
-• Input controlado para nova tarefa
-• Botão ou Enter para submeter
-• Validação: não permitir tarefas vazias
-• Limpar input após adicionar
+01 - _Adicionar Tarefas_
 
----
-
-02 - _Exibir Lista de Tarefas_ <BR>
-• Renderizar array de tarefas
-• Mostrar título da tarefa
-• Indicar status (pendente/concluída)
-• Lista vazia: mensagem amigável
+    • Input controlado para nova tarefa
+    • Botão ou Enter para submeter
+    • Validação: não permitir tarefas vazias
+    • Limpar input após adicionar
 
 ---
 
-03 - _Marcar como Concluída_ <BR>
-• Checkbox ou botão para toggle
-• Atualizar estado da tarefa específica
-• Feedback visual (texto riscado, cor diferente)
+02 - _Exibir Lista de Tarefas_
+
+    • Renderizar array de tarefas
+    • Mostrar título da tarefa
+    • Indicar status (pendente/concluída)
+    • Lista vazia: mensagem amigável
 
 ---
 
-04 - _Remover Tarefas_ <BR>
-• Botão de delete para cada tarefa
-• Confirmação antes de remover (opcional)
-• Remover do estado/lista
+03 - _Marcar como Concluída_
+
+    • Checkbox ou botão para toggle
+    • Atualizar estado da tarefa específica
+    • Feedback visual (texto riscado, cor diferente)
 
 ---
 
-05 - _Contador de Tarefas_<BR>
-• Mostrar total de tarefas
-• Mostrar quantas estão pendentes
-• Mostrar quantas estão concluídas
+04 - _Remover Tarefas_
+
+    • Botão de delete para cada tarefa
+    • Confirmação antes de remover (opcional)
+    • Remover do estado/lista
 
 ---
 
-06 - _Interface Responsiva_<BR>
-• Design mobile-first
-• Layout adaptativo
-• Experiência consistente em todos dispositivos
+05 - _Contador de Tarefas_
+
+    • Mostrar total de tarefas
+    • Mostrar quantas estão pendentes
+    • Mostrar quantas estão concluídas
+
+---
+
+06 - _Interface Responsiva_
+
+    • Design mobile-first
+    • Layout adaptativo
+    • Experiência consistente em todos dispositivos
