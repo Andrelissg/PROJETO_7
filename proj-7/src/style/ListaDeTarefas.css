@@ -1,4 +1,4 @@
-/* Mobile-first base styles */
+/* Mobile-first*/
 .todo-container {
   padding: 1rem;
   background-color: #f9f9f9;
@@ -38,7 +38,7 @@ ul {
   background-color: #f0f8ff;
 }
 
-/* Responsivo para telas maiores */
+/*  telas maiores */
 @media (min-width: 600px) {
   .todo-container {
     max-width: 500px;
