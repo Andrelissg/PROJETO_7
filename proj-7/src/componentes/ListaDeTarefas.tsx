@@ -1,19 +1,22 @@
-
 function ListaDeTarefas({ tarefas }) {
   if (tarefas.length === 0) {
-    return <p className="no-task">Nenhuma tarefa cadastrada.</p>;
+    return (
+      <p className="text-white/80 text-center">Nenhuma tarefa cadastrada</p>
+    );
   }
 
   return (
-    <ul className="task-list">
+    <div className="flex flex-col items-center gap-3 w-full">
       {tarefas.map((tarefa) => (
-        <li key={tarefa.id} className="task-item">
-          <span className={tarefa.concluida ? "task-done" : "task-text"}>
-            {tarefa.titulo}
-          </span>
-        </li>
+        <input
+          key={tarefa.id}
+          type="text"
+          value={tarefa.titulo}
+          readOnly
+          className="w-full px-4 py-2 rounded-md bg-white/20 text-white placeholder-white/70 focus:outline-none"
+        />
       ))}
-    </ul>
+    </div>
   );
 }
 
