@@ -5,7 +5,12 @@ export default {
     "./src/style/**/*.css"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+
+      }
+    },
   },
   plugins: [],
 }

@@ -22,22 +22,22 @@
 
 function ListaDeTarefas({ tarefas }) {
   if (tarefas.length === 0) {
-    return <p className="text-gray-500 text-center">Nenhuma tarefa cadastrada.</p>;
+    return <p className="text-white text-lg">Nenhuma tarefa cadastrada.</p>;
   }
 
   return (
-    <div>
-      <ul className="space-y-2">
-        {tarefas.map((tarefa) => (
-          <li
-            key={tarefa.id}
-            className="px-4 py-2 border rounded-lg bg-gray-50 hover:bg-gray-100"
-          >
+    <ul className="space-y-2 w-full max-w-md">
+      {tarefas.map((tarefa) => (
+        <li
+          key={tarefa.id}
+          className="bg-white p-3 rounded-lg shadow flex items-center justify-between"
+        >
+          <span className={`${tarefa.concluida ? "line-through text-gray-400" : "text-gray-800"}`}>
             {tarefa.titulo}
-          </li>
-        ))}
-      </ul>
-    </div>
+          </span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
