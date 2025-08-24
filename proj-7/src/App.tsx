@@ -1,6 +1,7 @@
 // Importa a função useState do React, que guarda informações que mudam na tela.
 import { useState } from "react";
 
+
 // Importa o componente que mostra a lista de tarefas.
 import ListaDeTarefas from "./componentes/ListaDeTarefas";
 
@@ -47,6 +48,18 @@ function App() {
     }
   };
 
+  
+    // Função que remove uma tarefa pelo ID
+  const removerTarefa = (id: number) => {
+    const confirmar = window.confirm("Tem certeza que deseja remover esta tarefa?");
+    if (confirmar) {
+      // Atualiza o estado filtrando as tarefas que NÃO têm o id informado
+      setTarefas((atual) => atual.filter((tarefa) => tarefa.id !== id));
+    }
+  };
+
+
+
   // Tudo o que é "return" é o que aparece na tela (HTML + componentes).
   return (
     // Caixa principal com espaçamento e largura definidos no CSS.
@@ -74,10 +87,11 @@ function App() {
       </div>
 
       {/* Aqui mostramos a lista de tarefas usando o componente próprio. */}
-      <ListaDeTarefas tarefas={tarefas} />
+        <ListaDeTarefas tarefas={tarefas} onDelete={removerTarefa} /> 
     </div>
   );
 }
+
 
 // Torna o componente disponível para ser usado em outros arquivos.
 export default App;
