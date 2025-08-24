@@ -1,2 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* fundo da tela com gradiente */
+.app-container {
+  @apply min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+         flex flex-col items-center justify-start p-6 font-sans;
+}
+
+/* título */
+.app-title {
+  @apply text-4xl font-bold text-white mb-6;
+}
+
+/* área de input e botão */
+.input-area {
+  @apply flex gap-2 mb-6 w-full max-w-md;
+}
+
+.task-input {
+  @apply flex-1 p-3 rounded-lg border border-gray-300 
+         focus:outline-none focus:ring-2 focus:ring-pink-400;
+}
+
+.add-button {
+  @apply p-3 bg-white text-pink-600 rounded-lg shadow 
+         hover:bg-pink-100 transition cursor-pointer;
+}
 
 

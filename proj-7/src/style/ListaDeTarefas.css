@@ -1,52 +1,23 @@
-/* Mobile-first*/
-.todo-container {
-  padding: 1rem;
-  background-color: #f9f9f9;
-  max-width: 100%;
-  box-sizing: border-box;
+@tailwind base;
+@tailwind components; 
+@tailwind utilities;
+
+.no-task {
+  @apply text-white text-lg;
 }
 
-h1 {
-  text-align: center;
+.task-list {
+  @apply space-y-2 w-full max-w-md;
 }
 
-.sem-tarefas {
-  text-align: center;
-  color: #888;
-  font-size: 1rem;
-  margin-top: 2rem;
+.task-item {
+  @apply bg-white p-3 rounded-lg shadow flex items-center justify-between;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
+.task-text {
+  @apply text-gray-800;
 }
 
-.todo-input {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-  color: #333;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease;
-}
-
-.todo-input:hover {
-  background-color: #f0f8ff;
-}
-
-/*  telas maiores */
-@media (min-width: 600px) {
-  .todo-container {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .todo-input {
-    font-size: 1.1rem;
-    padding: 1rem;
-  }
+.task-done {
+  @apply line-through text-gray-400;
 }
