@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ListaDeTarefas from "./componentes/ListaDeTarefas";
-import IncluirTarefas from "./componentes/IncluirTarefas";
+import FiltrarTarefa from "./componentes/FiltrarTarefa";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [tarefas, setTarefas] = useState([]);
@@ -13,6 +15,14 @@ function App() {
     setNovaTarefa("");
   };
 
+  const editarTarefa = (id, novoTitulo) => {
+    setTarefas(tarefas.map(t => t.id === id ? { ...t, titulo: novoTitulo } : t));
+  };
+
+  const removerTarefa = (id) => {
+    setTarefas(tarefas.filter(t => t.id !== id));
+  };
+
   return (
     <div className="min-h-screen bg-neutral-100 text-gray-800 font-sans flex items-center justify-center px-4">
       <div className="w-full max-w-xl p-6 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white shadow-lg">
@@ -20,7 +30,7 @@ function App() {
           Minhas Tarefas
         </h1>
 
-        {/* Input + Botão lado a lado */}
+        {/* Input + Botão */}
         <div className="flex items-center justify-center gap-3 mb-6">
           <input
             type="text"
@@ -38,10 +48,18 @@ function App() {
           </button>
         </div>
 
-        {/* Lista centralizada */}
+        <FiltrarTarefa tarefas={tarefas} />
+
+        {/* Lista de Tarefas */}
         <div className="flex flex-col items-center">
-          <ListaDeTarefas tarefas={tarefas} />
+          <ListaDeTarefas
+            tarefas={tarefas}
+            onEditar={editarTarefa}
+            onRemover={removerTarefa}
+          />
         </div>
+
+        <ToastContainer />
       </div>
     </div>
   );

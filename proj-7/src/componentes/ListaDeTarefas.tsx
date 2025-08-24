@@ -1,22 +1,30 @@
-function ListaDeTarefas({ tarefas }) {
-  if (tarefas.length === 0) {
-    return (
-      <p className="text-white/80 text-center">Nenhuma tarefa cadastrada</p>
-    );
-  }
+import EditarTarefa from "./EditarTarefa";
 
+interface Tarefa {
+  id: number;
+  titulo: string;
+  concluida: boolean;
+}
+
+interface ListaDeTarefasProps {
+  tarefas: Tarefa[];
+  onEditar: (id: number, novoTitulo: string) => void;
+  onRemover: (id: number) => void;
+}
+
+function ListaDeTarefas({ tarefas, onEditar, onRemover }: ListaDeTarefasProps) {
   return (
-    <div className="flex flex-col items-center gap-3 w-full">
+    <ul className="w-full">
       {tarefas.map((tarefa) => (
-        <input
-          key={tarefa.id}
-          type="text"
-          value={tarefa.titulo}
-          readOnly
-          className="w-full px-4 py-2 rounded-md bg-white/20 text-white placeholder-white/70 focus:outline-none"
-        />
+        <li key={tarefa.id} className="flex justify-between items-center mb-2 bg-white/20 px-4 py-2 rounded">
+          <span>{tarefa.titulo}</span>
+          <div className="flex gap-2">
+            <EditarTarefa tarefa={tarefa} onSalvar={onEditar} />
+            <button onClick={() => onRemover(tarefa.id)} className="text-white hover:text-red-300">🗑️</button>
+          </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
