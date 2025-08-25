@@ -1,37 +1,38 @@
-interface FiltrarTarefaProps {
-  modo: "todos" | "pendentes" | "concluidas";
-  setModo: (modo: "todos" | "pendentes" | "concluidas") => void;
+interface Props {
+  filtro: "todos" | "pendentes" | "concluidas";
+  setFiltro: (f: "todos" | "pendentes" | "concluidas") => void;
+  busca: string;
+  setBusca: (valor: string) => void;
 }
 
-function FiltrarTarefa({ modo, setModo }: FiltrarTarefaProps) {
+
+function FiltrarTarefa({ filtro, setFiltro, busca, setBusca }: Props) {
   return (
-    <div>
-      <label className="block mb-1 font-semibold">Filtrar:</label>
-      <div className="flex gap-2">
-        <button
-          onClick={() => setModo("todos")}
-          className={`px-3 py-2 rounded-md border ${
-            modo === "todos" ? "bg-[#102f5e] text-white" : "bg-white text-[#102f5e]"
-          }`}
+    <div className="flex justify-between items-center gap-4 mb-4">
+      {/* Pesquisar */}
+      <div className="flex-1">
+        <label className="block text-sm font-semibold mb-1">Pesquisar:</label>
+        <input
+          type="text"
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+          placeholder="Buscar tarefa..."
+          className="w-full px-2 py-1 text-sm rounded border border-[#102f5e] focus:outline-none"
+        />
+      </div>
+
+      {/* Filtro */}
+      <div className="w-32">
+        <label className="block text-sm font-semibold mb-1">Filtrar:</label>
+        <select
+          value={filtro}
+          onChange={(e) => setFiltro(e.target.value as any)}
+          className="w-full px-2 py-1 text-sm rounded border border-[#102f5e] focus:outline-none"
         >
-          Todos
-        </button>
-        <button
-          onClick={() => setModo("pendentes")}
-          className={`px-3 py-2 rounded-md border ${
-            modo === "pendentes" ? "bg-[#102f5e] text-white" : "bg-white text-[#102f5e]"
-          }`}
-        >
-          Pendentes
-        </button>
-        <button
-          onClick={() => setModo("concluidas")}
-          className={`px-3 py-2 rounded-md border ${
-            modo === "concluidas" ? "bg-[#102f5e] text-white" : "bg-white text-[#102f5e]"
-          }`}
-        >
-          Concluídas
-        </button>
+          <option value="todos">Todos</option>
+          <option value="pendentes">Pendentes</option>
+          <option value="concluidas">Concluídas</option>
+        </select>
       </div>
     </div>
   );

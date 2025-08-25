@@ -1,55 +1,35 @@
-import { Plus } from "lucide-react";
-
-interface IncluirTarefasProps {
+interface Props {
   novaTarefa: string;
-  setNovaTarefa: (tarefa: string) => void;
-  adicionarTarefa: () => void;
+  setNovaTarefa: (texto: string) => void;
+  adicionarOuEditarTarefa: () => void;
+  modoEdicao: boolean;
+  cancelarEdicao: () => void;
 }
 
 function IncluirTarefas({
   novaTarefa,
   setNovaTarefa,
-  adicionarTarefa,
-}: IncluirTarefasProps) {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") adicionarTarefa();
-  };
-
-  const tarefasFiltradas = tarefas.filter((t) => {
-    if (modoFiltro === "todos") return true;
-    if (modoFiltro === "pendentes") return !t.concluida;
-    return t.concluida;
-  });
-
+  adicionarOuEditarTarefa,
+  modoEdicao,
+  cancelarEdicao,
+}: Props) {
   return (
-    <div className="input-area">
+    <div className="flex gap-2">
       <input
         type="text"
         value={novaTarefa}
         onChange={(e) => setNovaTarefa(e.target.value)}
-        placeholder="Digite uma nova tarefa"
-        className="px-2 py-1 text-sm rounded border"
+        placeholder="Digite uma tarefa"
+        className="flex-1 px-2 py-1 border rounded"
       />
-
-      <button
-        onClick={adicionarOuEditarTarefa}
-        className="px-2 py-1 text-sm rounded bg-[#102f5e] text-white"
-      >
-        {modoEdicao ? "✔ Confirmar" : <Plus size={14} />}
+      <button onClick={adicionarOuEditarTarefa} className="p-2 rounded bg-white text-[#102f5e] hover:bg-[#102f5e] hover:text-white transition cursor-pointer">
+        {modoEdicao ? "✔" : "➕"}
       </button>
-
       {modoEdicao && (
-        <button
-          onClick={cancelarEdicao}
-          className="px-2 py-1 text-sm rounded bg-gray-300"
-        >
+        <button onClick={cancelarEdicao} className="px-2 py-1 bg-gray-300 rounded cursor-pointer hover:bg-gray-400 transition">
           Cancelar
         </button>
       )}
-
-      <button onClick={adicionarOuEditarTarefa} className="add-button">
-        <Plus size={16} />
-      </button>
     </div>
   );
 }

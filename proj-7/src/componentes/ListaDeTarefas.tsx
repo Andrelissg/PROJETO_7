@@ -1,47 +1,34 @@
-import EditarTarefa from "./EditarTarefa";
+import type { Tarefa } from "../types";
 
-interface Tarefa {
-  id: number;
-  titulo: string;
-  concluida: boolean;
-}
-
-interface ListaDeTarefasProps {
+interface Props {
   tarefas: Tarefa[];
-  onEditar: (id: number, novoTitulo: string) => void;
+  onEditar: (t: Tarefa) => void;
   onRemover: (id: number) => void;
+  onConcluir: (id: number) => void;
 }
 
-function ListaDeTarefas({ tarefas, onEditar, onRemover }: ListaDeTarefasProps) {
+function ListaDeTarefas({ tarefas, onEditar, onRemover, onConcluir }: Props) {
   return (
-    <ul className="w-full space-y-2">
+    <ul className="space-y-2">
       {tarefas.map((tarefa) => (
         <li
           key={tarefa.id}
-          className={`flex items-center justify-between px-4 py-2 rounded-md border ${
+          className={`flex justify-between items-center px-2 py-1 rounded border ${
             tarefa.concluida ? "border-green-500" : "border-red-500"
           }`}
         >
-          <span
-            className={`font-medium ${
-              tarefa.concluida
-                ? "line-through text-green-500 border-green-500"
-                : "text-red-500 border-red-500"
-            }`}
-          >
+          <span className={tarefa.concluida ? "line-through text-green-600" : "text-red-600"}>
             {tarefa.titulo}
           </span>
-
-          <div className="flex gap-2">
-            <button className="border border-[#102f5e] bg-white text-[#102f5e] p-2 rounded-md hover:bg-[#102f5e] hover:text-white transition cursor-pointer">
-              <i className="pointer-events-none">✔</i>
+          <div className="flex gap-1">
+            <button onClick={() => onConcluir(tarefa.id)} className="p-2 rounded bg-white text-[#102f5e] hover:bg-[#102f5e] hover:text-white transition cursor-pointer">
+              ✔
             </button>
-            <EditarTarefa tarefa={tarefa} onSalvar={onEditar} />
-            <button
-              onClick={() => onRemover(tarefa.id)}
-              className="border border-[#102f5e] bg-white text-[#102f5e] p-2 rounded-md hover:bg-[#102f5e] hover:text-white transition cursor-pointer"
-            >
-              <i className="pointer-events-none">✖</i>
+            <button onClick={() => onEditar(tarefa)} className="p-2 rounded bg-white text-[#102f5e] hover:bg-[#102f5e] hover:text-white transition cursor-pointer">
+              ✏️
+            </button>
+            <button onClick={() => onRemover(tarefa.id)} className="p-2 rounded bg-white text-[#102f5e] hover:bg-[#102f5e] hover:text-white transition cursor-pointer">
+              ✖
             </button>
           </div>
         </li>
