@@ -1,3 +1,5 @@
+import { Trash } from "phosphor-react";
+
 interface RemoverTarefaProps {
   tarefaId: number;
   onRemover: (id: number) => void;
@@ -9,8 +11,8 @@ function RemoverTarefa({ tarefaId, onRemover }: RemoverTarefaProps) {
   };
 
   return (
-    <button onClick={confirmarRemocao} className="text-white hover:text-red-300 cursor-pointer">
-      🗑️
+    <button onClick={() => RemoverTarefa(t.id)}>
+      <Trash size={20} color="#ef4444" weight="bold" />
     </button>
   );
 }

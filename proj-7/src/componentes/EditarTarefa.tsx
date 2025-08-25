@@ -25,7 +25,9 @@ function EditarTarefa({ tarefa, onSalvar }: EditarTarefaProps) {
       autoFocus
     />
   ) : (
-    <button onClick={() => setEditando(true)} className="text-white hover:text-yellow-300 cursor-pointer">✏️</button>
+    <button onClick={() => setEditando(true)} className="border border-[#102f5e] bg-white text-[#102f5e] p-2 rounded-md hover:bg-[#102f5e] hover:text-white transition cursor-pointer">
+        <i className="pointer-events-none">✏️</i>
+    </button>
   );
 }
 

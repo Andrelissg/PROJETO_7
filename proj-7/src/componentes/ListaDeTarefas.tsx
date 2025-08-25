@@ -14,13 +14,35 @@ interface ListaDeTarefasProps {
 
 function ListaDeTarefas({ tarefas, onEditar, onRemover }: ListaDeTarefasProps) {
   return (
-    <ul className="w-full">
+    <ul className="w-full space-y-2">
       {tarefas.map((tarefa) => (
-        <li key={tarefa.id} className="flex justify-between items-center mb-2 bg-white/20 px-4 py-2 rounded">
-          <span>{tarefa.titulo}</span>
+        <li
+          key={tarefa.id}
+          className={`flex items-center justify-between px-4 py-2 rounded-md border ${
+            tarefa.concluida ? "border-green-500" : "border-red-500"
+          }`}
+        >
+          <span
+            className={`font-medium ${
+              tarefa.concluida
+                ? "line-through text-green-500 border-green-500"
+                : "text-red-500 border-red-500"
+            }`}
+          >
+            {tarefa.titulo}
+          </span>
+
           <div className="flex gap-2">
+            <button className="border border-[#102f5e] bg-white text-[#102f5e] p-2 rounded-md hover:bg-[#102f5e] hover:text-white transition cursor-pointer">
+              <i className="pointer-events-none">✔</i>
+            </button>
             <EditarTarefa tarefa={tarefa} onSalvar={onEditar} />
-            <button onClick={() => onRemover(tarefa.id)} className="text-white hover:text-red-300">🗑️</button>
+            <button
+              onClick={() => onRemover(tarefa.id)}
+              className="border border-[#102f5e] bg-white text-[#102f5e] p-2 rounded-md hover:bg-[#102f5e] hover:text-white transition cursor-pointer"
+            >
+              <i className="pointer-events-none">✖</i>
+            </button>
           </div>
         </li>
       ))}
