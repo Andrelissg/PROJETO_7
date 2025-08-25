@@ -20,7 +20,7 @@ function IncluirTarefas({
         value={novaTarefa}
         onChange={(e) => setNovaTarefa(e.target.value)}
         placeholder="Digite uma tarefa"
-        className="flex-1 px-2 py-1 border rounded"
+        className="flex-1 px-2 py-1 border rounded "
       />
       <button onClick={adicionarOuEditarTarefa} className="p-2 rounded bg-white text-[#102f5e] hover:bg-[#102f5e] hover:text-white transition cursor-pointer">
         {modoEdicao ? "✔" : "➕"}

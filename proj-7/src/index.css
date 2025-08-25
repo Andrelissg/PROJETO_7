@@ -1,3 +1,31 @@
 @import "tailwindcss";
 
 
+/* Fundo com degradê azul */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(180deg, #0d47a1 0%, #42a5f5 100%);
+  min-height: 100vh;
+}
+
+/* Container central */
+div[class*="max-w-md"] {
+  background: white;
+}
+
+/* Estilo da lista de tarefas */
+.lista-tarefas-item {
+  background-color: #201182; /* azul escuro */
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+input::placeholder {
+  color: rgba(18, 1, 1, 0.7);
+}

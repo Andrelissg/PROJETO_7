@@ -13,11 +13,11 @@ function ListaDeTarefas({ tarefas, onEditar, onRemover, onConcluir }: Props) {
       {tarefas.map((tarefa) => (
         <li
           key={tarefa.id}
-          className={`flex justify-between items-center px-2 py-1 rounded border ${
-            tarefa.concluida ? "border-green-500" : "border-red-500"
+          className={`flex justify-between items-center px-2 py-1 rounded border-3 lista-tarefas-item ${
+            tarefa.concluida ? "border-green-500": "border-red-500"
           }`}
         >
-          <span className={tarefa.concluida ? "line-through text-green-600" : "text-red-600"}>
+          <span className={tarefa.concluida ? "line-through text-white" : "text-white"}>
             {tarefa.titulo}
           </span>
           <div className="flex gap-1">
