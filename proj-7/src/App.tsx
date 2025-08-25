@@ -3,65 +3,64 @@ import ListaDeTarefas from "./componentes/ListaDeTarefas";
 import FiltrarTarefa from "./componentes/FiltrarTarefa";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Plus, CheckCircle, Trash } from "phosphor-react"; 
-import type { Tarefa } from "./types"; 
+import { Plus, CheckCircle, Trash } from "phosphor-react";
+import type { Tarefa } from "./types";
 
 function App() {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]);
   const [novaTarefa, setNovaTarefa] = useState("");
-  const [tituloEditado, setTituloEditado] = useState("");
+  const [modoEdicao, setModoEdicao] = useState(false);
+  const [idEmEdicao, setIdEmEdicao] = useState<number | null>(null);
+  const [modoFiltro, setModoFiltro] = useState<
+    "todos" | "pendentes" | "concluidas"
+  >("todos");
 
   const [editando, setEditando] = useState(false);
-  const [editandoId, setEditandoId] = useState<number | null>(null);
 
-  const [modoFiltro, setModoFiltro] = useState<"todos" | "pendentes" | "concluidas">("todos");
+  const adicionarOuEditarTarefa = () => {
+    if (!novaTarefa.trim()) return;
 
-  const adicionarTarefa = () => {
-    if (novaTarefa.trim() === "") return;
-    const nova = { id: Date.now(), titulo: novaTarefa, concluida: false };
-    setTarefas((atual) => [...atual, nova]);
+    if (modoEdicao && idEmEdicao !== null) {
+      const tarefaEditada = {
+        id: idEmEdicao,
+        titulo: novaTarefa,
+        concluida: false,
+      };
+      setTarefas((prev) => [...prev, tarefaEditada]);
+      setModoEdicao(false);
+      setIdEmEdicao(null);
+    } else {
+      const nova = { id: Date.now(), titulo: novaTarefa, concluida: false };
+      setTarefas((prev) => [...prev, nova]);
+    }
+
     setNovaTarefa("");
   };
 
-  const iniciarEdicao = (id: number, titulo: string) => {
-    setEditando(true);
-    setEditandoId(id);
-    setTituloEditado(titulo);
-  };
-
-  const confirmarEdicao = () => {
-    if (editandoId === null) return;
-    setTarefas(
-      tarefas.map((t) =>
-        t.id === editandoId ? { ...t, titulo: tituloEditado } : t
-      )
-    );
-    setEditando(false);
-    setEditandoId(null);
-    setTituloEditado("");
+  const iniciarEdicao = (tarefa: Tarefa) => {
+    setNovaTarefa(tarefa.titulo);
+    setTarefas((prev) => prev.filter((t) => t.id !== tarefa.id));
+    setModoEdicao(true);
+    setIdEmEdicao(tarefa.id);
   };
 
   const cancelarEdicao = () => {
-    setEditando(false);
-    setEditandoId(null);
-    setTituloEditado("");
-  };
-
-  const editarTarefa = (id: number, novoTitulo: string) => {
-    setTarefas(
-      tarefas.map((t) => (t.id === id ? { ...t, titulo: novoTitulo } : t))
-    );
+    setNovaTarefa("");
+    setModoEdicao(false);
+    setIdEmEdicao(null);
   };
 
   const removerTarefa = (id: number) => {
-    setTarefas(tarefas.filter((t) => t.id !== id));
+    setTarefas((prev) => prev.filter((t) => t.id !== id));
   };
 
-  const tarefasFiltradas = tarefas.filter((t) => {
-    if (modoFiltro === "pendentes") return !t.concluida;
-    if (modoFiltro === "concluidas") return t.concluida;
-    return true;
-  });
+  const concluirTarefa = (id: number) => {
+    setTarefas((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, concluida: !t.concluida } : t))
+    );
+  };
+
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#102f5e] to-transparent text-[#102f5e] font-sans flex items-center justify-center px-4">
@@ -74,7 +73,7 @@ function App() {
             type="text"
             value={novaTarefa}
             onChange={(e) => setNovaTarefa(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && adicionarTarefa()}
+            onKeyDown={(e) => e.key === "Enter" && adicionarOuEditarTarefa()}
             placeholder="Digite uma nova tarefa"
             className="flex-1 px-4 py-2 rounded-md border border-[#102f5e] focus:outline-none"
           />
@@ -86,7 +85,7 @@ function App() {
               ✅
             </button>
           ) : (
-            <button onClick={adicionarTarefa} className="add-button">
+            <button onClick={adicionarOuEditarTarefa} className="add-button">
               <Plus size={16} color="#102f5e" />
             </button>
           )}
@@ -116,7 +115,9 @@ function App() {
         {/* Edição */}
         {editandoId !== null && (
           <div className="mb-6">
-            <label className="block mb-2 font-semibold">Edite sua tarefa:</label>
+            <label className="block mb-2 font-semibold">
+              Edite sua tarefa:
+            </label>
             <div className="flex items-center gap-3">
               <input
                 type="text"
